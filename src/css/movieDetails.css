@@ -1,0 +1,237 @@
+.movie-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.movie-header {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-poster {
+  width: 300px;
+  border-radius: 8px;
+}
+
+.movie-info {
+  flex-grow: 1;
+}
+
+.movie-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.movie-tagline {
+  font-size: 18px;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.movie-metadata {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.movie-metadata span {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.movie-scores {
+  margin-bottom: 20px;
+}
+
+.movie-score {
+  font-size: 18px;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.movie-overview {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.movie-credits p {
+  font-size: 16px;
+  color: #444;
+  margin: 5px 0;
+}
+
+.movie-cast {
+  margin-top: 40px;
+}
+
+.cast-list {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.cast-card {
+  width: 140px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.cast-photo {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.cast-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #222;
+}
+
+.cast-character {
+  font-size: 14px;
+  color: #666;
+}
+
+.trailers {
+  margin-top: 40px;
+}
+
+.trailers h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.trailer-list {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.trailer-video {
+  flex: 0 0 auto;
+  width: 500px;
+}
+
+.trailer-video iframe {
+  width: 100%;
+  height: 280px;
+  border-radius: 8px;
+}
+/* Custom Scrollbar Styles */
+.cast-list::-webkit-scrollbar,
+.trailer-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cast-list::-webkit-scrollbar-thumb,
+.trailer-list::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 4px;
+}
+
+/* Firefox scrollbar styles */
+.cast-list,
+.trailer-list {
+  scrollbar-width: thin;
+  scrollbar-color: grey transparent;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .movie-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .movie-poster {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .movie-info {
+    width: 100%;
+    text-align: center;
+  }
+
+  .movie-title {
+    font-size: 28px;
+  }
+
+  .movie-tagline {
+    font-size: 16px;
+  }
+
+  .movie-metadata {
+    font-size: 14px;
+  }
+
+  .movie-score {
+    font-size: 16px;
+  }
+
+  .movie-overview {
+    font-size: 14px;
+  }
+
+  .cast-card {
+    width: 100px;
+  }
+
+  .trailer-video {
+    width: 100%;
+  }
+
+  .trailer-video iframe {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-title {
+    font-size: 24px;
+  }
+
+  .movie-tagline {
+    font-size: 14px;
+  }
+
+  .movie-metadata {
+    font-size: 12px;
+  }
+
+  .movie-score {
+    font-size: 14px;
+  }
+
+  .movie-overview {
+    font-size: 12px;
+  }
+
+  .cast-card {
+    width: 80px;
+  }
+
+  .cast-name, .cast-character {
+    font-size: 12px;
+  }
+
+  .trailer-video {
+    width: 100%
+   }
+
+  .trailer-video iframe {
+    height: 160px;
+  }
+}

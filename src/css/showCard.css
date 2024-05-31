@@ -1,0 +1,43 @@
+.show-card {
+  display: block;
+  width: 200px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.show-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.show-card-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.show-card-info h4 {  
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.show-card-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .show-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .show-card-title {
+    font-size: 14px;
+  }
+
+  .show-card-rating {
+    font-size: 12px;
+  }
+}
