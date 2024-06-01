@@ -7,6 +7,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [trailers, setTrailers] = useState([]);
+  const [streamingOptions, setStreamingOptions] = useState([]);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -18,6 +19,9 @@ const MovieDetails = () => {
           },
         });
         setMovie(response.data);
+
+        // Fetch streaming options only after fetching movie details
+        fetchStreamingOptions(response.data.title);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -36,6 +40,28 @@ const MovieDetails = () => {
       }
     };
 
+    const fetchStreamingOptions = async (title) => {
+      try {
+        const partnerToken = 'YOUR_PARTNER_TOKEN'; // replace with your actual partner token
+        const response = await axios.get(`https://apis.justwatch.com/contentpartner/v2/content/titles/en_US/popular`, {
+          params: {
+            query: title,
+            content_types: ['movie'],
+            token: partnerToken
+          },
+        });
+    
+        const movieData = response.data.items.find(item => item.title.toLowerCase() === title.toLowerCase());
+        if (movieData) {
+          setStreamingOptions(movieData.offers || []);
+        } else {
+          setStreamingOptions([]);
+        }
+      } catch (error) {
+        console.error('Error fetching streaming options from JustWatch:', error);
+      }
+    };
+    
     fetchMovieDetails();
     fetchMovieTrailers();
   }, [id]);
@@ -106,6 +132,21 @@ const MovieDetails = () => {
             )
           ))}
         </div>
+      </div>
+      <div className="streaming-options">
+        <h2>Watch Now</h2>
+        <ul>
+          {streamingOptions.map(option => (
+            <li key={option.provider_id}>
+              <a href={option.urls.standard_web} target="_blank" rel="noopener noreferrer">
+                {option.provider_name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p>
+        Available on <a href={`https://www.justwatch.com${streamingOptions.full_path}`} target="_blank" rel="noopener noreferrer"><img src="/path/to/justwatch-logo.png" alt="JustWatch" style={{ width: '100px' }} /></a>
+      </p>
       </div>
     </div>
   );
